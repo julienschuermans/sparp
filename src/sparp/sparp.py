@@ -164,7 +164,7 @@ async def async_main(configs, source_queue, source_semaphore, sink_queue, shared
     retry_options = ExponentialRetry(
         attempts=retry_attempts,
         statuses=set(retry_status_codes),
-        retry_all_server_errors=False
+        retry_all_server_errors=True
     )
     async with RetryClient(
             client_session=aiohttp.ClientSession(
